@@ -4,7 +4,26 @@ public class funciones {
 
 	static final int TAMANIO = 20;
 	static final int MINAS = 6;
-
+	
+	public static char[] juego(char tableroJuego[], char tableroRelleno[], int casilla) {
+		
+		if(tableroJuego[casilla] == '-') {
+			tableroJuego[casilla] = tableroRelleno[casilla];
+		}
+		
+		return tableroJuego;
+	}
+	
+	public static Boolean fin(char tableroRelleno[], int casilla) {
+		Boolean mina = false;
+		
+		if(tableroRelleno[casilla] == '*') {
+			mina = true;
+		}
+		
+		return mina;
+	}
+	
 	public static char[] rellenaMinas(char tablero[]) {
 		int indice;
 		char tableroMinas[] = new char[TAMANIO];
