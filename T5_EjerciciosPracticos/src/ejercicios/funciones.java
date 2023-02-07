@@ -1,5 +1,10 @@
 package ejercicios;
 
+/**
+ * Clase funciones del ejercicio01
+ * @author Francisco Rodríguez Tejada
+ *
+ */
 public class funciones {
 
 	static final int TAMANIO = 20; //Variable global para definir el tamaño del tablero
