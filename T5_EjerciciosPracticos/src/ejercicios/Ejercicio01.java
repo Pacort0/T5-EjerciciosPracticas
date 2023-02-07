@@ -22,20 +22,28 @@ public class Ejercicio01 {
 			tableroMinas[i] = '0';
 		}
 		
-		for(int i=0; i<=MINAS; i++) {
+		for(int i=0; i<MINAS; i++) {
 			do {
 				indice = (int)(Math.random()*(20+1)-1);
 				tableroMinas[indice] = '*';
 				
 				if(bordeIzq(indice)) {
-					tableroMinas[indice+1] += 1;
+					if(!compruebaMinaDer(tableroMinas, indice)) {
+					tableroMinas[indice + 1] += 1;
+					}
 				}
 				else if (bordeDer(indice)) {
-					tableroMinas[indice-1] += 1;
-				}
-				else {
+					if(!compruebaMinaIzq(tableroMinas, indice)) {
 					tableroMinas[indice + 1] += 1;
+					}
+				}
+				else{
+					if(!compruebaMinaIzq(tableroMinas, indice)) {
 					tableroMinas[indice - 1] += 1;
+					}
+					if(!compruebaMinaDer(tableroMinas, indice)) {
+						tableroMinas[indice + 1] += 1;
+					}
 				}
 			}while(tableroMinas[indice]!= '*');
 		}
@@ -61,7 +69,22 @@ public class Ejercicio01 {
 		return borde;
 	}
 	
-	public static Boolean compruebaMina() {
+	public static Boolean compruebaMinaDer(char tablero[], int indice) {
+		Boolean mina = false;
 		
+		if(tablero[indice + 1]=='*') {
+			mina = true;
+		}
+		
+		return mina;
+	}
+	public static Boolean compruebaMinaIzq(char tablero[], int indice) {
+		Boolean mina = false;
+		
+		if(tablero[indice - 1]=='*') {
+			mina = true;
+		}
+		
+		return mina;
 	}
 }
