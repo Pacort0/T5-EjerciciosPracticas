@@ -30,7 +30,7 @@ public class Ejercicio01 {
 			do { //Pedimos al usuario una casilla válida a destapar
 				System.out.println("Introduzca una casilla que destapar (0-19): ");
 				casilla = sc.nextInt();
-			} while ((casilla < 0 || casilla >= 20) && tablero[casilla] != '-');
+			} while (casilla < 0 || casilla >= 20 || tableroJuego[casilla] != '-');
 			
 			resultado++; //Si logra pasar el segundo do-while, es una casilla válida a destapar, así que aumentamos el contador
 			
