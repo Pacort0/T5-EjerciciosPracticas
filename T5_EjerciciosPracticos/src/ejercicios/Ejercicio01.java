@@ -60,4 +60,8 @@ public class Ejercicio01 {
 		}
 		return borde;
 	}
+	
+	public static Boolean compruebaMina() {
+		
+	}
 }
