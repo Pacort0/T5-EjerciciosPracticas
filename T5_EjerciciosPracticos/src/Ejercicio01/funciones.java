@@ -1,4 +1,4 @@
-package ejercicios;
+package Ejercicio01;
 
 /**
  * Clase funciones del ejercicio01
