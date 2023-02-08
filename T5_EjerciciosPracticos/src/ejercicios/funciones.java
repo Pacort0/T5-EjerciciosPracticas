@@ -28,10 +28,10 @@ public class funciones {
 	}
 	
 	/**
-	 * Se comprueba si el jugador ha ganado o ha perdido
+	 * Se comprueba si el jugador ha pisado una mina
 	 * @param tableroRelleno tablero con las minas y las pistas
 	 * @param casilla índice a destapar
-	 * @return devuelve un booleano que dice si se ha ganado o perdido
+	 * @return devuelve un booleano que dice si se ha perdido
 	 */
 	public static Boolean derrota(char tableroRelleno[], int casilla) {
 		Boolean fin = false;
@@ -43,6 +43,11 @@ public class funciones {
 		return fin;
 	}
 	
+	/**
+	 * Se comprueba si se han destapado todas las casillas sanas
+	 * @param resultado recibe un contador de casillas destapadas
+	 * @return devuelve un booleano que indica si se ha ganado
+	 */
 	public static Boolean victoria(int resultado) {
 		Boolean fin = false;
 		
