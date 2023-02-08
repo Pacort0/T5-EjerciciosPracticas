@@ -14,7 +14,7 @@ public class Ejercicio01 {
 		char tablero[] = new char[funciones.TAMANIO]; //Creamos el tablero a rellenar con las pistas
 		char tableroJuego[] = new char[funciones.TAMANIO]; //Creamos el tablero con el que se va a jugar
 		int casilla; //Para guardar la casilla que el usuario quiere destapar
-		int resultado = 0; //Según el resultado, imprimiremos una cosa u otra al final del juego
+		int buena = 0; //Según el resultado, imprimiremos una cosa u otra al final del juego
 
 		Scanner sc = new Scanner(System.in); //Escáner del programa
 
@@ -23,7 +23,7 @@ public class Ejercicio01 {
 		for (int i = 0; i < funciones.TAMANIO; i++) { //Rellenamos el tablero de juego con guiones
 			tableroJuego[i] = '-';
 		}
-
+		
 		System.out.println(Arrays.toString(tableroJuego)); //Mostramos el tablero de juego
 		
 		do { //Pedimos al usuario una casilla a destapar mientras éste no se coma una mina
@@ -32,12 +32,12 @@ public class Ejercicio01 {
 				casilla = sc.nextInt();
 			} while (casilla < 0 || casilla >= 20 || tableroJuego[casilla] != '-');
 			
-			resultado++; //Si logra pasar el segundo do-while, es una casilla válida a destapar, así que aumentamos el contador
+			buena++; //Si logra pasar el segundo do-while, es una casilla válida a destapar, así que aumentamos el contador
 			
 			System.out.println(Arrays.toString(funciones.juego(tableroJuego, tablero, casilla))); //Mostramos el tablero con la casilla destapada
-		} while (!funciones.fin(tablero, casilla));
+		} while (!funciones.derrota(tablero, casilla) && !funciones.victoria(buena));
 		
-		if(resultado <= 13) { //Si el resultado está por debajo de 14, ha perdido
+		if(funciones.derrota(tablero, casilla)) { //Si el resultado está por debajo de 14, ha perdido
 			System.out.println("¡Vaya, has perdido! Este es el tablero completo: ");
 		} 
 		else { //Si no, ha conseguido terminar el juego sin morir

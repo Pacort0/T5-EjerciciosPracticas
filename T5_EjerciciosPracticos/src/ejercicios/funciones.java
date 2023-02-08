@@ -33,14 +33,23 @@ public class funciones {
 	 * @param casilla índice a destapar
 	 * @return devuelve un booleano que dice si se ha ganado o perdido
 	 */
-	public static Boolean fin(char tableroRelleno[], int casilla) {
-		Boolean mina = false;
+	public static Boolean derrota(char tableroRelleno[], int casilla) {
+		Boolean fin = false;
 		
 		if(tableroRelleno[casilla] == '*') {
-			mina = true;
+			fin = true;
 		}
 		
-		return mina;
+		return fin;
+	}
+	
+	public static Boolean victoria(int resultado) {
+		Boolean fin = false;
+		
+		if(resultado > 13) {
+			fin = true;
+		}
+		return fin;
 	}
 	
 	/**
