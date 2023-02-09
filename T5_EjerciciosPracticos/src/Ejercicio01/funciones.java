@@ -80,9 +80,8 @@ public class funciones {
 		while (contador < MINAS) { // Bucle while que se cortará tras rellenar 6 minas
 
 			indice = (int) (Math.random() * (20 + 1) - 1); // Guardamos el índice generado aleatoriamente
-			if (tableroMinas[indice] == '*') { // Si en esa posición ya hay una mina, descontamos -1 al contador
-				contador--;
-			} else {
+			if (tableroMinas[indice] != '*') { // Si en esa posición ya hay una mina, descontamos -1 al contador
+
 				tableroMinas[indice] = '*'; // Si no hay mina, la ponemos
 
 				if (bordeIzq(indice)) { // Llamamos a la función bordeIzq
@@ -105,8 +104,8 @@ public class funciones {
 						tableroMinas[indice + 1] += 1;
 					}
 				}
+				contador++; // Como hemos metido una mina con éxito, incrementamos el contador
 			}
-			contador++; // Como hemos metido una mina con éxito, incrementamos el contador
 		}
 		return tableroMinas; // Devolvemos el tablero relleno
 	}
