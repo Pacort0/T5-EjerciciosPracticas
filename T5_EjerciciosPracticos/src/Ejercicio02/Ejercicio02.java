@@ -33,14 +33,15 @@ public class Ejercicio02 {
 			valorRonda = funciones.puntos(valores);
 			jug1 += valorRonda;
 			
-			if(funciones.pasao(jug1)) {
-				System.out.println("¡Te has pasado!");
-			}
-			
 			carta = funciones.carta(valorRonda);
 
 			System.out.println("Su carta es " + carta);
 			System.out.println("Tienes " + jug1 + " puntos.");
+			
+			if(funciones.pasao(jug1)) {
+				System.out.println("¡Te has pasado!");
+				break;
+			}
 
 		} while (eleccion == 's');
 		
@@ -58,17 +59,18 @@ public class Ejercicio02 {
 			
 			valorRonda = funciones.puntos(valores);
 			jug2 += valorRonda;
-			
-			if(funciones.pasao(jug2)) {
-				System.out.println("¡Te has pasado!");
-			}
 
 			carta = funciones.carta(valorRonda);
 
 			System.out.println("Su carta es " + carta);
 			System.out.println("Tienes " + jug2 + " puntos.");
 
-		} while (eleccion == 's' && jug1 <= 7.5);
+			if(funciones.pasao(jug2)) {
+				System.out.println("¡Te has pasado!");
+				break;
+			}
+			
+		} while (eleccion == 's' && jug2 <= 7.5);
 		
 		funciones.ganador(jug1, jug2);
 		
