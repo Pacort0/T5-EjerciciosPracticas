@@ -74,7 +74,7 @@ public class Ejercicio02 {
 		
 		funciones.ganador(jug1, jug2);
 		
-		sc.close();
+		sc.close(); //Cerramos el escáner
 	}
 
 }
