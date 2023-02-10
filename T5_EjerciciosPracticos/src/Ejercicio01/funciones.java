@@ -80,7 +80,7 @@ public class funciones {
 		while (contador < MINAS) { // Bucle while que se cortará tras rellenar 6 minas
 
 			indice = (int) (Math.random() * (20 + 1) - 1); // Guardamos el índice generado aleatoriamente
-			if (tableroMinas[indice] != '*') { // Si en esa posición ya hay una mina, descontamos -1 al contador
+			if (tableroMinas[indice] != '*') { //Si hay mina, no pasa nada y se vuelve al while
 
 				tableroMinas[indice] = '*'; // Si no hay mina, la ponemos
 

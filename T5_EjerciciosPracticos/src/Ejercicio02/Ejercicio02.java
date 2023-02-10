@@ -7,6 +7,7 @@ public class Ejercicio02 {
 
 	public static void main(String[] args) {
 		double valores[] = new double[10];
+		String cartas[] = new String[0];
 		double jug1 = 0;
 		double jug2 = 0;
 		char eleccion;
@@ -25,56 +26,62 @@ public class Ejercicio02 {
 				System.out.println("¿Deseas sacar una carta? (s/n): ");
 				eleccion = sc.next().charAt(0);
 			} while (eleccion != 'n' && eleccion != 's');
-			
+
 			if (eleccion == 'n') {
 				break;
 			}
-			
+
 			valorRonda = funciones.puntos(valores);
 			jug1 += valorRonda;
-			
-			carta = funciones.carta(valorRonda);
+
+			do {
+				carta = funciones.carta(valorRonda);
+			} while (funciones.cartaRepe(carta, cartas));
 
 			System.out.println("Su carta es " + carta);
 			System.out.println("Tienes " + jug1 + " puntos.");
-			
-			if(funciones.pasao(jug1)) {
+
+			if (funciones.pasao(jug1)) {
 				System.out.println("¡Te has pasado!");
 				break;
 			}
 
 		} while (eleccion == 's');
-		
+
 		System.out.println("Es el turno del JUGADOR 2.");
-		
+
 		do {
 			do {
 				System.out.println("¿Deseas sacar una carta? (s/n): ");
 				eleccion = sc.next().charAt(0);
 			} while (eleccion != 'n' && eleccion != 's');
-			
+
 			if (eleccion == 'n') {
 				break;
 			}
-			
+
 			valorRonda = funciones.puntos(valores);
 			jug2 += valorRonda;
 
-			carta = funciones.carta(valorRonda);
+			do {
+				carta = funciones.carta(valorRonda);
+			} while (funciones.cartaRepe(carta, cartas));
 
 			System.out.println("Su carta es " + carta);
 			System.out.println("Tienes " + jug2 + " puntos.");
 
-			if(funciones.pasao(jug2)) {
+			if (funciones.pasao(jug2)) {
 				System.out.println("¡Te has pasado!");
 				break;
 			}
-			
-		} while (eleccion == 's' && jug2 <= 7.5);
-		
+
+		} while (eleccion == 's');
+
 		funciones.ganador(jug1, jug2);
 		
-		sc.close(); //Cerramos el escáner
+		System.out.print(Arrays.toString(cartas));
+
+		sc.close(); // Cerramos el escáner
 	}
 
 }

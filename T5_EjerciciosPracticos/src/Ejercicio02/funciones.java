@@ -1,6 +1,10 @@
 package Ejercicio02;
 
+import java.util.Arrays;
+
 public class funciones {
+
+	public static final double maximoPuntos = 7.5;
 
 	public static void rellenaValores(double[] valores) {
 		double cartas[] = valores;
@@ -96,7 +100,7 @@ public class funciones {
 	public static Boolean pasao(double punt) {
 		Boolean pasao = false;
 
-		if (punt > 7.5) {
+		if (punt > maximoPuntos) {
 			pasao = true;
 		}
 
@@ -105,12 +109,12 @@ public class funciones {
 
 	public static void ganador(double punt1, double punt2) {
 
-		if (punt1 > 7.5 && punt2 <= 7.5) {
+		if (punt1 > maximoPuntos && punt2 <= maximoPuntos) {
 			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
 					+ " puntos.\n ¡El ganador es el JUGADOR 2!");
-		} else if (punt1 <= 7.5 && punt2 > 7.5) {
+		} else if (punt1 <= maximoPuntos && punt2 > maximoPuntos) {
 			System.out.print("¡El ganador es el JUGADOR 1!");
-		} else if (punt1 <= 7.5 && punt2 <= 7.5) {
+		} else if (punt1 <= maximoPuntos && punt2 <= maximoPuntos) {
 			if (punt1 > punt2) {
 				System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
 						+ " puntos.\n ¡El ganador es el JUGADOR 1!");
@@ -125,6 +129,24 @@ public class funciones {
 			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
 					+ " puntos.\n Ambos jugadores se han pasado de 7.5: ¡es un empate!");
 		}
+	}
+	
+	public static Boolean cartaRepe(String carta, String[] cartasUsadas) {
+		Boolean repetida = false;
+		String cartas [] = cartasUsadas;
+		
+		cartas = Arrays.copyOf(cartas, cartas.length + 1);
+		
+		for(int i=0; i<cartas.length; i++) {
+			if(carta == cartas[i]) {
+				repetida = true;
+				break;
+			}
+		}
+		
+		cartas[cartas.length-1] = carta;
+		
+		return repetida;
 	}
 
 }
