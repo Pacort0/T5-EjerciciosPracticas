@@ -4,70 +4,86 @@ import java.util.Arrays;
 
 public class funciones {
 
-	public static final double maximoPuntos = 7.5;
+	public static final double maximoPuntos = 7.5; // Variable global para determinar la puntuación límite
 
+	/**
+	 * Función que rellena la tabla valores con los valores de las cartas
+	 * 
+	 * @param valores Recibe la tabla valores vacía
+	 */
 	public static void rellenaValores(double[] valores) {
-		double cartas[] = valores;
 
-		for (int i = 0; i < cartas.length; i++) {
-			if (i >= 7) {
-				cartas[i] = 0.5;
+		for (int i = 0; i < valores.length; i++) {
+			if (i >= 7) { // Los índices 7, 8 y 9 corresponden a la sota, el caballo y el rey
+				valores[i] = 0.5;
 			} else {
-				cartas[i] = (i + 1);
+				valores[i] = (i + 1);
 			}
 		}
 	}
 
+	/**
+	 * Función que escoge aleatoriamente el valor de la carta en cada turno
+	 * 
+	 * @param valores Recibe la tabla con los valores
+	 * @return Devuelve los puntos de la carta
+	 */
 	public static double puntos(double[] valores) {
 		double puntos;
 
-		puntos = (Math.random() * (10) - 1);
-		puntos = valores[(int) puntos];
+		puntos = (Math.random() * (10) - 1); // Escoge el número de la carta
+		puntos = valores[(int) puntos]; // Inserta el valor de la carta en la variable
 
 		return puntos;
 	}
 
+	/**
+	 * Función que escribe la carta
+	 * 
+	 * @param puntos Usa los puntos de la carta para determinar cuál es
+	 * @return Devuelve la carta y su palo por escrito
+	 */
 	public static String carta(double puntos) {
 		String valor = "";
-		int miembro = 0;
+		int nobleza = 0;
 
-		if (puntos == 0.5) {
-			miembro = (int) (Math.random() * 3);
+		if (puntos == 0.5) { // Si la puntuación es de 0.5, es una carta de la nobleza
+			nobleza = (int) (Math.random() * 3); // Escogemos su valor aleatoriamente
 
-			switch (miembro) {
+			switch (nobleza) { // Asignamos en función del valor que salga
 			case 0:
-				valor = " la sota " + palo();
+				valor = "la sota " + palo();
 				break;
 			case 1:
-				valor = " el caballo " + palo();
+				valor = "el caballo " + palo();
 				break;
 			case 2:
-				valor = " el rey " + palo();
+				valor = "el rey " + palo();
 			}
 		}
 
-		else {
+		else { // Si no es de la nobleza, le asignamos el valor que corresponde con los puntos
 			switch ((int) puntos) {
 			case 1:
-				valor = "as " + palo();
+				valor = "el as " + palo();
 				break;
 			case 2:
-				valor = "dos " + palo();
+				valor = "el dos " + palo();
 				break;
 			case 3:
-				valor = "tres " + palo();
+				valor = "el tres " + palo();
 				break;
 			case 4:
-				valor = "cuatro " + palo();
+				valor = "el cuatro " + palo();
 				break;
 			case 5:
-				valor = "cinco " + palo();
+				valor = "el cinco " + palo();
 				break;
 			case 6:
-				valor = "seis " + palo();
+				valor = "el seis " + palo();
 				break;
 			case 7:
-				valor = "siete " + palo();
+				valor = "el siete " + palo();
 				break;
 			}
 		}
@@ -75,6 +91,11 @@ public class funciones {
 		return valor;
 	}
 
+	/**
+	 * Esta función escoge aleatoriamente un palo para asignarlo a la carta
+	 * 
+	 * @return Devuelve el palo de la carta en forma de cadena
+	 */
 	public static String palo() {
 		String palo = "";
 		int opcion = 0;
@@ -97,6 +118,12 @@ public class funciones {
 		return palo;
 	}
 
+	/**
+	 * Esta función comprueba si los jugadores se han pasado del límite de puntos
+	 * 
+	 * @param punt Recibe los puntos del jugador por parámetro
+	 * @return Devuelve un booleano en función de si se ha pasado o no
+	 */
 	public static Boolean pasao(double punt) {
 		Boolean pasao = false;
 
@@ -107,6 +134,50 @@ public class funciones {
 		return pasao;
 	}
 
+	/**
+	 * Función que agrega la carta que se ha usado a un 'montón' aparte con el resto
+	 * de usadas
+	 * 
+	 * @param carta        Recibe la carta que se ha sacado
+	 * @param cartasUsadas Recibe el montón de cartas ya usadas
+	 * @return Devuelve el montón actualizado
+	 */
+	public static String[] gastaCarta(String carta, String[] cartasUsadas) {
+
+		cartasUsadas = Arrays.copyOf(cartasUsadas, cartasUsadas.length + 1);
+
+		cartasUsadas[cartasUsadas.length - 1] = carta;
+
+		return cartasUsadas;
+	}
+
+	/**
+	 * Función que comprueba si la carta que se ha sacado está repetida o no
+	 * 
+	 * @param carta        Recibe la candidata a carta a salir
+	 * @param cartasUsadas Recibe el montón de cartas ya usadas
+	 * @return Devuelve un booleano en función de si está repetida o no
+	 */
+	public static Boolean cartaRepe(String carta, String[] cartasUsadas) {
+		Boolean repetida = false;
+
+		for (int i = 0; i < cartasUsadas.length; i++) {
+			if (carta.equals(cartasUsadas[i])) {
+				repetida = true;
+				break;
+			}
+		}
+
+		return repetida;
+	}
+
+	/**
+	 * Función que devuelve el resultado de la partida, así como el ganador de la
+	 * misma
+	 * 
+	 * @param punt1 Puntos del jugador 1
+	 * @param punt2 Puntos del jugador 2
+	 */
 	public static void ganador(double punt1, double punt2) {
 
 		if (punt1 > maximoPuntos && punt2 <= maximoPuntos) {
@@ -129,24 +200,6 @@ public class funciones {
 			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
 					+ " puntos.\n Ambos jugadores se han pasado de 7.5: ¡es un empate!");
 		}
-	}
-	
-	public static Boolean cartaRepe(String carta, String[] cartasUsadas) {
-		Boolean repetida = false;
-		String cartas [] = cartasUsadas;
-		
-		cartas = Arrays.copyOf(cartas, cartas.length + 1);
-		
-		for(int i=0; i<cartas.length; i++) {
-			if(carta == cartas[i]) {
-				repetida = true;
-				break;
-			}
-		}
-		
-		cartas[cartas.length-1] = carta;
-		
-		return repetida;
 	}
 
 }
