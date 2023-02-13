@@ -39,10 +39,10 @@ public class Ejercicio02 {
 
 			do { // Mientras la carta no se haya sacado ya
 				valorRonda = funciones.puntos(valores); // Escogemos una carta aleatoriamente y guardamos su valor
-				jug1 += valorRonda; // Sumamos los puntos a los del jugador
 				carta = funciones.carta(valorRonda); // Escogemos aleatoriamente el palo de la carta
 			} while (funciones.cartaRepe(carta, cartas));
-
+			
+			jug1 += valorRonda; // Sumamos los puntos a los del jugador
 			cartas = funciones.gastaCarta(carta, cartas); // Si la carta no se ha repetido, guardamos su valor en el
 															// array
 
@@ -70,10 +70,10 @@ public class Ejercicio02 {
 
 			do {
 				valorRonda = funciones.puntos(valores);
-				jug2 += valorRonda;
 				carta = funciones.carta(valorRonda);
 			} while (funciones.cartaRepe(carta, cartas));
-
+			
+			jug2 += valorRonda;
 			cartas = funciones.gastaCarta(carta, cartas);
 
 			System.out.println("Su carta es " + carta);
