@@ -2,9 +2,11 @@ package Ejercicio02;
 
 import java.util.Arrays;
 
-public class funciones {
+public class Funciones {
 
 	public static final double maximoPuntos = 7.5; // Variable global para determinar la puntuación límite
+	public static double jug1;
+	public static double jug2;
 
 	/**
 	 * Función que rellena la tabla valores con los valores de las cartas
@@ -29,12 +31,44 @@ public class funciones {
 	 * @return Devuelve los puntos de la carta
 	 */
 	public static double puntos(double[] valores) {
+		double valoresCartas;
+
+		valoresCartas = (Math.random() * (10) - 1); // Escoge el número de la carta
+		valoresCartas = valores[(int) valoresCartas]; // Inserta el valor de la carta en la variable
+
+		return valoresCartas;
+	}
+	
+	/**
+	 * Función que suma la puntuación de los jugadores
+	 * @param ronda Recibe el jugador que está jugando la ronda
+	 * @param valorCarta Recibe el valor de la carta
+	 */
+	public static void sumaPuntaje(int ronda, double valorCarta) {
+		
+		if(ronda == 1) {
+			jug1 += valorCarta;
+		}
+		else {
+			jug2 += valorCarta;
+		}
+	}
+	
+	/**
+	 * Función que devuelve los puntos de cad jugador
+	 * @param ronda Recibe el jugador que está jugando la ronda
+	 * @return Devuelve los puntos del jugador correspondiente
+	 */
+	public static double puntosJugador(int ronda) {
 		double puntos;
-
-		puntos = (Math.random() * (10) - 1); // Escoge el número de la carta
-		puntos = valores[(int) puntos]; // Inserta el valor de la carta en la variable
-
-		return puntos;
+		
+		 if(ronda==1) {
+			 puntos = jug1;
+		 }
+		 else {
+			 puntos = jug2;
+		 }
+		 return puntos;
 	}
 
 	/**
@@ -184,7 +218,8 @@ public class funciones {
 			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
 					+ " puntos.\n ¡El ganador es el JUGADOR 2!");
 		} else if (punt1 <= maximoPuntos && punt2 > maximoPuntos) {
-			System.out.print("¡El ganador es el JUGADOR 1!");
+			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
+					+ " puntos.\n ¡El ganador es el JUGADOR 1!");
 		} else if (punt1 <= maximoPuntos && punt2 <= maximoPuntos) {
 			if (punt1 > punt2) {
 				System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
