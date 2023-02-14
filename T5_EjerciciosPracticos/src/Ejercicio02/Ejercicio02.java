@@ -12,7 +12,7 @@ public class Ejercicio02 {
 
 	public static void main(String[] args) {
 		double valores[] = new double[10]; // Guardaremos los valores de todas las cartas
-		String cartas[] = new String[0]; // Guardaremos todas las cartas que se vayan usando
+		String usadas[] = new String[0]; // Guardaremos todas las cartas que se vayan usando
 		double valorCarta = 0; // Guardaremos el valor de la carta en cada ronda
 		char eleccion; // Para guardar la elección del jugador (si quiere o no otra carta)
 		String carta; // Guardaremos la carta por escrito
@@ -41,10 +41,10 @@ public class Ejercicio02 {
 				do { // Mientras la carta no se haya sacado ya
 					valorCarta = Funciones.puntos(valores); // Escogemos una carta aleatoriamente y guardamos su valor
 					carta = Funciones.carta(valorCarta); // Escogemos aleatoriamente el palo de la carta
-				} while (Funciones.cartaRepe(carta, cartas));
+				} while (Funciones.cartaRepe(carta, usadas));
 
 				Funciones.sumaPuntaje(ronda, valorCarta);
-				cartas = Funciones.gastaCarta(carta, cartas); // Si la carta no se ha repetido, guardamos su valor en el
+				usadas = Funciones.gastaCarta(carta, usadas); // Si la carta no se ha repetido, guardamos su valor en el
 																// array
 
 				System.out.println("Su carta es " + carta); // Mostramos la carta

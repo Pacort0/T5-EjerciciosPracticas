@@ -233,7 +233,7 @@ public class Funciones {
 			}
 		} else {
 			System.out.print("El JUGADOR 1 TIENE " + punt1 + " puntos y el JUGADOR 2 tiene " + punt2
-					+ " puntos.\n Ambos jugadores se han pasado de 7.5: ¡es un empate!");
+					+ " puntos.\n Ambos jugadores se han pasado de 7.5: ¡Sois malísimos, es un empate de perdedores!");
 		}
 	}
 
