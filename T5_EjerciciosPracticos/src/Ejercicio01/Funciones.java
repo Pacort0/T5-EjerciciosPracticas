@@ -6,7 +6,7 @@ package Ejercicio01;
  * @author Francisco Rodríguez Tejada
  *
  */
-public class funciones {
+public class Funciones {
 
 	static final int TAMANIO = 20; // Variable global para definir el tamaño del tablero
 	static final int MINAS = 6; // Variable global para determinar la cantidad de minas
